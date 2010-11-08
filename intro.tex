@@ -1,0 +1,59 @@
+\section{Introduction}
+
+
+\subsection{Measuring Storage Resource Consumption}
+
+% storeage resource intro
+Measuring consumption of storage resources is distintively different from
+measuing consumption of batch jobs. Where jobs typically have exclusive access
+to a single resource (a cpu core) for a given amount of time, a storage
+resource\footnote{The authors are well aware that storage systems are created
+by pooling togther disks, but this is transparent for the user, and typically
+not used when accounting for resource consumption.} is almost always shared
+among several parties, with each of these participants use a part of the
+resource. Futhermore the usage of each participant will vary over time, and as
+data tend to be long-lived there is no fixed start and end time of the 
+
+% integrals and spikes
+To exactly measure the amount of consumed resource\ldots
+
+
+
+
+\subsection{Relation to the Usage Record format}
+
+The record format described in this document, is clearly related to the usage
+record format recommendation of the OGF 98 standard, is it tries to achive a
+shared record format for accounting consumed resources. Furthermore it shares
+several element names and semantics of the fields.
+
+Wheather to define a completely new format, or partly reuse the usage record
+format has not been decided.
+
+
+\subsection{Record Structure}
+
+The structure of the format described in this document can be split into
+logical parts, each describing an aspect of the resource consumption. The parts
+are:
+
+\begin{description}
+
+\item[Resource] Fields describing the system the resource was consumed on. Can
+specify a certain subsystem of the storage system.
+
+\item[Consumption Details] Fields describing what is consuming the data. E.g.,
+storage classes, number of files, directory path, etc.
+
+\item[Identity] Fields describing the person/group which is accountable for the
+resource consumption.
+
+\item[Resource Consumption] Fields describing how much of the described
+resource has been used.
+
+\end{description}
+
+Please note that this organization, is not directly reflected in record format.
+It is merely a good mental model to have in mind.
+
+

@@ -1,0 +1,144 @@
+
+\section{Record Properties}
+
+This section describes the properties (fields) used in record.
+
+%each field should have:
+% name
+% precise semantic description
+% should be included or not
+% alternative/previous/discussed names
+% examples
+
+\subsection{RecordIdentity}
+
+This property describe the identity of the record. The field has to attributes:
+recordId and createTime. The recordId attribute of the type string and should
+be constructed in such a way that it is globally unique and records with the
+same value is not generated accidently. Hence this field can be used to identiy
+the record, and provide a basis for duplicate detection. The createTime
+attribute is an ISO timestamp describing when the record was created.
+
+The field is similar to the field with the same name in the Usage Record
+standard.
+
+\begin{itemize}
+\item The RecordIdentity property MUST be present in the record.
+\item The RecordIdentity field MUST NOT have any value.
+\item The recordId attribute MUST be present in the record.
+\item The recordID attribute MUST have the type string.
+\item The createTime attribute MUST be present in the record.
+\item The createTime attribute MUST be an ISO timestamp.
+\end{itemize}
+
+{\bf Example}
+\begin{verbatim}
+<ns:RecordIdentity
+ns:createTime="2010-11-09T09:06:52Z"
+ns:recordId="host.example.org/sr/87912469269276"/>
+\end{verbatim}
+
+
+\subsection{StorageSystem}
+
+This property describes the storage system on which the resources has been
+consumed. This value should be choosen in such a way that it globally
+identifies the storage system, on which resource is being consumed. E.g., the
+FQDN of the storage system could be used.
+
+In grid lingo, this would be a storage element.
+
+\begin{itemize}
+\item The StorageSystem property SHOULD be present in the record.
+\item The StorageSystem field MUST have the type string.
+\item The StorageSystem value SHOULD be constructed in such a way, that it
+    globally identifies the storage system.
+\end{itemize}
+
+{\bf Example}
+\begin{verbatim}
+<ns:StorageSystem>host.example.org</ns:StorageSystem>
+\end{verbatim}
+
+
+\subsection{StorageShare}
+
+This property describes the part of of the storage system which is accounted
+for in the record. For a storage system, which is split into several logical
+parts, this can be used to account for consumption on each of these parts.
+The value should be able to identity the share of the storage system, given
+the storage system property.
+
+This property has previously been named StoragePartition.
+
+\begin{itemize}
+\item The StorageShare field type MUST be a string.
+\end{itemize}
+
+{\bf Example}
+\begin{verbatim}
+<ns:StorageShare>pool-003</ns:StorageShare>
+\end{verbatim}
+
+
+\subsection{StorageType}
+
+This property describes which type of storage is accounted for in the record,
+e.g., ''disk'' or tape. This allows for explicit accounting for different types for
+backend store.
+
+\begin{itemize}
+\item The StorageType field type MUST be a string.
+\end{itemize}
+
+{\bf Example}
+\begin{verbatim}
+<ns:StorageType>disk</ns:StorageType>
+\end{verbatim}
+
+
+\subsection{StorageClass}
+
+This property describes the class of the stored data, e.g., "pinned",
+"replicated", "precious". This is a descriptive value, which allows the storage
+system to provide details about the stored data.
+
+\begin{itemize}
+\item The StorageClass field type MUST be a string.
+\item The following values MUST be 
+\end{itemize}
+
+
+ - what
+StorageClass
+FileCount
+DirectoryPath
+FileNames
+
+
+
+
+MeasureTime     - timestamp when the usage consumption was measured
+  ValidDuration / ExpireTime
+  StartTime, EndTime
+
+
+SpaceUsed
+SpaceReserved
+SpaceAvailable
+
+ - who/identity
+   -- global
+   GlobalUserIdentity
+   Group
+   GroupAuthority
+   SubGroup
+   GroupRole (name could be better
+
+UserIdentity
+VOInformation       - group / project
+LocalUserName,
+LocalUserGroup
+
+
+
