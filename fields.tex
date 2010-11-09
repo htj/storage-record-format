@@ -1,7 +1,7 @@
 
 \section{Record Properties}
 
-This section describes the properties (fields) used in record.
+This section describes the record properties and their fields and attributes.
 
 %each field should have:
 % name
@@ -9,6 +9,8 @@ This section describes the properties (fields) used in record.
 % should be included or not
 % alternative/previous/discussed names
 % examples
+
+% record metadata
 
 \subsection{RecordIdentity}
 
@@ -38,6 +40,7 @@ ns:createTime="2010-11-09T09:06:52Z"
 ns:recordId="host.example.org/sr/87912469269276"/>
 \end{verbatim}
 
+% where block
 
 \subsection{StorageSystem}
 
@@ -97,6 +100,8 @@ backend store.
 \end{verbatim}
 
 
+% what block
+
 \subsection{StorageClass}
 
 This property describes the class of the stored data, e.g., "pinned",
@@ -108,37 +113,136 @@ system to provide details about the stored data.
 \item The following values MUST be 
 \end{itemize}
 
-
- - what
-StorageClass
-FileCount
-DirectoryPath
-FileNames
+{\bf Example}
+\begin{verbatim}
+<ns:StorageClass>replicated</ns:StorageClass>
+\end{verbatim}
 
 
+\subsection{FileCount}
+
+This property describes the number of files which are accounted for in the
+record.
+
+\begin{itemize}
+\item The FileCount field type MUST be in integer.
+\end{itemize}
+
+{\bf Example}
+\begin{verbatim}
+<ns:FileCount>4</ns:Filecount>
+\end{verbatim}
 
 
-MeasureTime     - timestamp when the usage consumption was measured
-  ValidDuration / ExpireTime
-  StartTime, EndTime
+
+\subsection{DirectoryPath}
+
+This property describe the directy path being accounted for (if available).
+
+\begin{itemize}
+\item The DirectoryPath field type MUST be a string.
+\end{itemize}
+
+{\bf Example}
+\begin{verbatim}
+<ns:DirectoryPath>/projectA</ns:DirectoryPath>
+\end{verbatim}
 
 
-SpaceUsed
-SpaceReserved
-SpaceAvailable
+% identity block
 
- - who/identity
-   -- global
-   GlobalUserIdentity
-   Group
-   GroupAuthority
-   SubGroup
-   GroupRole (name could be better
+\subsection{LocalUserName}
+
+\subsection{LocalUserGroup}
+
+\subsection{UserIdentity}
+
+\subsection{Group}
+
+\subsection{GroupPartition}
+
+\subsection{GroupRole}
+
+\subsection{GroupAuthority}
+
+\subsection{Group}
 
 UserIdentity
-VOInformation       - group / project
 LocalUserName,
 LocalUserGroup
 
+
+
+
+
+% consumption block
+
+\subsection{MeasureTime}
+
+A timestamp indicating when the measurement of the resource consumption was
+made.
+
+\begin{itemize}
+\item The MeasureTime field type MUST be an ISO timestamp.
+\end{itemize}
+
+
+\subsection{ValidDuration}
+
+A duration indicating for how long time the measurement is valid.
+
+\begin{itemize}
+\item The ValidDuration field type MUST be an ISO duration.
+\end{itemize}
+
+
+\subsection{SpaceAllocated}
+
+An integer denoting the number of bytes used on the storage system. This is the
+main metric for measuring resource consumption. It should include all resources
+consumed, including reserved space.
+
+\begin{itemize}
+\item The SpaceAllocated property SHOULD be present in the record.
+\item The SpaceAllocated field type MUST be an integer.
+\end{itemize}
+
+\subsubsection*{Implementation Note}
+
+Using bytes saves us from the argument of discussing if 1000 or 1024 should be
+used as a base. However, this also means that the number reported can be very
+high. Therefore any implementation should use at least a 64-bit integer to hold
+this variable. However it is highly recommend to use a datatype with no upper
+limits (a signed 64-bit integer will overflow at 8 Terabyte).
+
+
+\subsection{SpaceReserved}
+
+An integer denoting the number of bytes reserved on the storage system, i.e.,
+space which has been allocated, but which is not filled with actual data. This
+amount should be included in the SpaceAllocated property, but this field can be
+used to describe exactly how much of the allocated space is reserved.
+
+\begin{itemize}
+\item The SpaceReserved field type MUST be an integer.
+\end{itemize}
+
+
+
+
+
+
+
+\section{Intentionally Left Out Properties}
+
+Note: These are still under discussion.
+
+Site
+FileNames
+SpaceAvailable
+Transfer information.
+StartTime, EndTime (replaced with measurementtime+validduration)
+
+VO information - Has been abstracted into the group properties.
 
 
