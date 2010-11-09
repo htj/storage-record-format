@@ -153,26 +153,121 @@ This property describe the directory path being accounted for (if available).
 
 \subsection{LocalUserName}
 
+The local user name of the storage system accountable for the resource
+consumption. Can be OS level or an internal username in the storage system.
+
+\begin{itemize}
+\item The LocalUserName field type MUST be a string.
+\end{itemize}
+
+{\bf Example}
+\begin{verbatim}
+<ns:LocalUserName>johndoe</ns:LocalUserName>
+\end{verbatim}
+
+
 \subsection{LocalUserGroup}
+
+The local user group of the storage system accountable for the resource
+consumption. Can be OS level or an internal group in the storage system.
+
+\begin{itemize}
+\item The LocalGroupName field type MUST be a string.
+\end{itemize}
+
+{\bf Example}
+\begin{verbatim}
+<ns:LocalGroupName>binarydataproject</ns:LocalGroupName>
+\end{verbatim}
+
 
 \subsection{UserIdentity}
 
+The global identity of the user accountable for the resource consumption. The
+property should identity the user globally, such that clashes does not happen
+accidentally, e.g., it could be an X509 identity.
+
+\begin{itemize}
+\item The UserIdentity field type MUST be a string.
+\end{itemize}
+
+{\bf Example}
+\begin{verbatim}
+<ns:UserIdentity>/O=Grid/OU=example.org/CN=John Doe</ns:UserIdentity>
+\end{verbatim}
+
+
 \subsection{Group}
+
+The global group accountable for the resource consumption. The property should
+identify the group globally, such that clashes does not happen accidentally,
+e.g., using FQDNs to construct it. In grid terms, this would typically be the
+VO name.
+
+\begin{itemize}
+\item The Group field type MUST be a string.
+\end{itemize}
+
+{\bf Example}
+\begin{verbatim}
+<ns:Group>binarydataproject.example.org</ns:Group>
+\end{verbatim}
+
 
 \subsection{GroupPartition}
 
+The part of a group accountable for the resource consumption. This is usefull
+in some projects which has several sub-groups where each group is accountable
+for their resource consumption. In grid terms this would typically be a group
+within a VO.
+
+\begin{itemize}
+\item The GroupPartition field type MUST be a string.
+\item The Group property MUST exist in the record of GroupPartition is
+    specified.
+\end{itemize}
+
+{\bf Example}
+\begin{verbatim}
+<ns:GroupPartition>ukusers</ns:GroupPartition>
+\end{verbatim}
+
+
 \subsection{GroupRole}
+
+The role of the group accountable for resource consumption. Roles are sometimes
+used to denote special tasks within a group or similar. In grid terms, this
+would be the role in a VO.
+
+\begin{itemize}
+\item The GroupRole field type MUST be a string.
+\item The Group property MUST exist in the record of GroupRole is specified.
+\end{itemize}
+
+{\bf Example}
+\begin{verbatim}
+<ns:GroupRole>analysis</ns:GroupRole>
+\end{verbatim}
+
 
 \subsection{GroupAuthority}
 
-\subsection{Group}
+The authority which the group is created under. This can be usefull, if there
+are group name clashes, or to see the group authority in certain security
+infrastructres. In grid terms, this would be CA issuing the certificate for the
+group.
 
-UserIdentity
-LocalUserName,
-LocalUserGroup
+\begin{itemize}
+\item The GroupRole field type MUST be a string.
+\item The GroupRole property MUST exist in the record of GroupPartition is
+    specified.
+\end{itemize}
 
-
-
+{\bf Example}
+\begin{verbatim}
+<ns:GroupAuthority>/O=Grid/OU=example.org/CN=host/auth.example.org
+</ns:GroupAuthority>
+\end{verbatim}
 
 
 % consumption block
