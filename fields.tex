@@ -17,7 +17,7 @@ This section describes the record properties and their fields and attributes.
 This property describe the identity of the record. The field has to attributes:
 recordId and createTime. The recordId attribute of the type string and should
 be constructed in such a way that it is globally unique and records with the
-same value is not generated accidently. Hence this field can be used to identiy
+same value is not generated accidentally. Hence this field can be used to identify
 the record, and provide a basis for duplicate detection. The createTime
 attribute is an ISO timestamp describing when the record was created.
 
@@ -28,7 +28,7 @@ standard.
 \item The RecordIdentity property MUST be present in the record.
 \item The RecordIdentity field MUST NOT have any value.
 \item The recordId attribute MUST be present in the record.
-\item The recordID attribute MUST have the type string.
+\item The recordId attribute MUST have the type string.
 \item The createTime attribute MUST be present in the record.
 \item The createTime attribute MUST be an ISO timestamp.
 \end{itemize}
@@ -45,7 +45,7 @@ ns:recordId="host.example.org/sr/87912469269276"/>
 \subsection{StorageSystem}
 
 This property describes the storage system on which the resources has been
-consumed. This value should be choosen in such a way that it globally
+consumed. This value should be chosen in such a way that it globally
 identifies the storage system, on which resource is being consumed. E.g., the
 FQDN of the storage system could be used.
 
@@ -130,14 +130,14 @@ record.
 
 {\bf Example}
 \begin{verbatim}
-<ns:FileCount>4</ns:Filecount>
+<ns:FileCount>4</ns:FileCount>
 \end{verbatim}
 
 
 
 \subsection{DirectoryPath}
 
-This property describe the directy path being accounted for (if available).
+This property describe the directory path being accounted for (if available).
 
 \begin{itemize}
 \item The DirectoryPath field type MUST be a string.
@@ -212,7 +212,7 @@ consumed, including reserved space.
 Using bytes saves us from the argument of discussing if 1000 or 1024 should be
 used as a base. However, this also means that the number reported can be very
 high. Therefore any implementation should use at least a 64-bit integer to hold
-this variable. However it is highly recommend to use a datatype with no upper
+this variable. However it is highly recommend to use a data type with no upper
 limits (a signed 64-bit integer will overflow at 8 Terabyte).
 
 
@@ -241,7 +241,7 @@ Site
 FileNames
 SpaceAvailable
 Transfer information.
-StartTime, EndTime (replaced with measurementtime+validduration)
+StartTime, EndTime (replaced with measurement time+valid duration)
 
 VO information - Has been abstracted into the group properties.
 
