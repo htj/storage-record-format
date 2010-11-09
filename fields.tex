@@ -154,7 +154,7 @@ This property describe the directory path being accounted for (if available).
 \subsection{LocalUserName}
 
 The local user name of the storage system accountable for the resource
-consumption. Can be OS level or an internal username in the storage system.
+consumption. Can be OS level or an internal user name in the storage system.
 
 \begin{itemize}
 \item The LocalUserName field type MUST be a string.
@@ -201,7 +201,7 @@ accidentally, e.g., it could be an X509 identity.
 
 The global group accountable for the resource consumption. The property should
 identify the group globally, such that clashes does not happen accidentally,
-e.g., using FQDNs to construct it. In grid terms, this would typically be the
+e.g., using a FQDN to construct it. In grid terms, this would typically be the
 VO name.
 
 \begin{itemize}
@@ -216,7 +216,7 @@ VO name.
 
 \subsection{GroupPartition}
 
-The part of a group accountable for the resource consumption. This is usefull
+The part of a group accountable for the resource consumption. This is useful
 in some projects which has several sub-groups where each group is accountable
 for their resource consumption. In grid terms this would typically be a group
 within a VO.
@@ -252,9 +252,9 @@ would be the role in a VO.
 
 \subsection{GroupAuthority}
 
-The authority which the group is created under. This can be usefull, if there
+The authority which the group is created under. This can be useful, if there
 are group name clashes, or to see the group authority in certain security
-infrastructres. In grid terms, this would be CA issuing the certificate for the
+infrastructures. In grid terms, this would be CA issuing the certificate for the
 group.
 
 \begin{itemize}
@@ -278,8 +278,14 @@ A timestamp indicating when the measurement of the resource consumption was
 made.
 
 \begin{itemize}
+\item The MeasureTime field SHOULD be present in the record.
 \item The MeasureTime field type MUST be an ISO timestamp.
 \end{itemize}
+
+{\bf Example}
+\begin{verbatim}
+<ns:MeasureTime>2010-10-11T09:31:40Z</ns:MeasureTime>
+\end{verbatim}
 
 
 \subsection{ValidDuration}
@@ -289,6 +295,11 @@ A duration indicating for how long time the measurement is valid.
 \begin{itemize}
 \item The ValidDuration field type MUST be an ISO duration.
 \end{itemize}
+
+{\bf Example}
+\begin{verbatim}
+<ns:ValidDuration>PT3600S</ns:ValidDuration>
+\end{verbatim}
 
 
 \subsection{SpaceAllocated}
@@ -301,6 +312,11 @@ consumed, including reserved space.
 \item The SpaceAllocated property SHOULD be present in the record.
 \item The SpaceAllocated field type MUST be an integer.
 \end{itemize}
+
+{\bf Example}
+\begin{verbatim}
+<ns:SpaceAllocated>13617</ns:SpaceAllocated>
+\end{verbatim}
 
 \subsubsection*{Implementation Note}
 
@@ -322,22 +338,43 @@ used to describe exactly how much of the allocated space is reserved.
 \item The SpaceReserved field type MUST be an integer.
 \end{itemize}
 
-
-
-
-
+{\bf Example}
+\begin{verbatim}
+<ns:SpaceReserved>617</ns:SpaceReserved>
+\end{verbatim}
 
 
 \section{Intentionally Left Out Properties}
 
 Note: These are still under discussion.
 
-Site
-FileNames
-SpaceAvailable
-Transfer information.
-StartTime, EndTime (replaced with measurement time+valid duration)
+These should be removed in the final standard, but are in the draft for
+discussion purposes.
 
-VO information - Has been abstracted into the group properties.
+\begin{description}
+
+\item[Site] This property would identify the site, as which the storage system
+is located, allowing easy grouping of several storage systems. However such a
+grouping is often defined elsewhere, and is not always static.
+
+\item[FileNames] Providing a list of file names in a record, would allow
+per-file accounting, or allow certain files to be accounted for separately.
+However the number of files stored can be very large, and file names occasionally
+contain sensitive information.
+
+\item[SpaceAvailable] This property would describe how much space is available
+for the identity on the storage system. This property would however not report
+any form of consumption, and can be a very tricky number to report.
+
+\item[Transfer Information] The original suggestion included properties for
+describing how much data has been transferred. There are however a range of
+issues with this: A. network resources are not storage resources. B:
+
+
+\item[StartTime / EndTime] Has been replaced measurement time and valid
+duration as it was not really known when the actual measurement of the resource
+consumption was taken.
+
+\end{description}
 
 
