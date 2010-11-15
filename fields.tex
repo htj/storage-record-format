@@ -3,6 +3,21 @@
 
 This section describes the record properties and their fields and attributes.
 
+The format of the record is XML, using QNames. There is currently no name space
+defined. The examples use an ``ns'' name space as placeholder. All time and
+duration formats are ISO types~\cite{iso8601}. These design choices are made in
+order to keep the format as close as possible to OGF usage record format.
+
+Many of the properties presented in this section are optional, however a few
+are not. For the required properties, it is explicitly listed, that they must
+be present in the record. None of the properties are allowed to be repeated.
+
+A record should only represent a single identity. This identity either be a
+person of a group of users. If a record contains both user and group
+information, the implementation should assume that the resources have been
+consumed by the listed user in the context of the group information.
+
+
 %each field should have:
 % name
 % precise semantic description
@@ -84,11 +99,17 @@ This property has previously been named StoragePartition.
 \end{verbatim}
 
 
-\subsection{StorageType}
+\subsection{StorageMedia}
 
-This property describes which type of storage is accounted for in the record,
-e.g., ''disk'' or tape. This allows for explicit accounting for different types for
-backend store.
+This property describes the media type of storage is accounted for in the
+record, e.g., ''disk'' or tape. This allows for explicit accounting for
+different types for backend storage. This field should not be used of the data
+accounted for in the record is on different media types.
+
+The following values must be understood by the implementation at which records
+are registered to: ``tape'', ``disk'', and ``solidstatedisk''.
+
+This property has previously been named StorageType.
 
 \begin{itemize}
 \item The StorageType field type MUST be a string.
@@ -110,7 +131,6 @@ system to provide details about the stored data.
 
 \begin{itemize}
 \item The StorageClass field type MUST be a string.
-\item The following values MUST be 
 \end{itemize}
 
 {\bf Example}
@@ -125,7 +145,7 @@ This property describes the number of files which are accounted for in the
 record.
 
 \begin{itemize}
-\item The FileCount field type MUST be in integer.
+\item The FileCount field type MUST be a positive non-null integer.
 \end{itemize}
 
 {\bf Example}
@@ -138,6 +158,9 @@ record.
 \subsection{DirectoryPath}
 
 This property describe the directory path being accounted for (if available).
+If the property is included in the record, the record should account for all
+usage in the directory and only that directory.
+
 
 \begin{itemize}
 \item The DirectoryPath field type MUST be a string.
@@ -252,10 +275,10 @@ would be the role in a VO.
 
 \subsection{GroupAuthority}
 
-The authority which the group is created under. This can be useful, if there
-are group name clashes, or to see the group authority in certain security
-infrastructures. In grid terms, this would be CA issuing the certificate for the
-group.
+The authority which the group is created under or controls the group. This can
+be useful, if there are group name clashes, or to see the group authority is in
+certain security infrastructures. In grid terms, this would be CA issuing the
+certificate for the group.
 
 \begin{itemize}
 \item The GroupRole field type MUST be a string.
@@ -290,9 +313,14 @@ made.
 
 \subsection{ValidDuration}
 
-A duration indicating for how long time the measurement is valid.
+A duration indicating for how long time the measurement is valid. The record
+must only be used accounting for the time frame in which it is valid. The
+generation of records should be performed in such a way, that gaps should not
+occur. Note that a new record can be ``nullified'' if a newer record is
+manifested, i.e., the most recent information should be used.
 
 \begin{itemize}
+\item The ValidDuration field SHOULD be present in the record.
 \item The ValidDuration field type MUST be an ISO duration.
 \end{itemize}
 
@@ -302,15 +330,17 @@ A duration indicating for how long time the measurement is valid.
 \end{verbatim}
 
 
-\subsection{SpaceAllocated}
+\subsection{CapacityUsed}
 
 An integer denoting the number of bytes used on the storage system. This is the
 main metric for measuring resource consumption. It should include all resources
 consumed, including reserved space.
 
+This property has previously been known as SpaceAllocated and SpaceUsed.
+
 \begin{itemize}
 \item The SpaceAllocated property SHOULD be present in the record.
-\item The SpaceAllocated field type MUST be an integer.
+\item The SpaceAllocated field type MUST be a positive integer.
 \end{itemize}
 
 {\bf Example}
@@ -327,15 +357,17 @@ this variable. However it is highly recommend to use a data type with no upper
 limits (a signed 64-bit integer will overflow at 8 Terabyte).
 
 
-\subsection{SpaceReserved}
+\subsection{CapacityReserved}
 
 An integer denoting the number of bytes reserved on the storage system, i.e.,
 space which has been allocated, but which is not filled with actual data. This
 amount should be included in the SpaceAllocated property, but this field can be
 used to describe exactly how much of the allocated space is reserved.
 
+This property has previously been known as SpaceReserved.
+
 \begin{itemize}
-\item The SpaceReserved field type MUST be an integer.
+\item The SpaceReserved field type MUST be a positive integer.
 \end{itemize}
 
 {\bf Example}
