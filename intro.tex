@@ -6,13 +6,14 @@
 % storeage resource intro
 Measuring consumption of storage resources is distintively different from
 measuing consumption of batch jobs. Where jobs typically have exclusive access
-to a single resource (a cpu core) for a given amount of time, a storage
+to a set of resource (cpu cores) for a given amount of time, a storage
 resource\footnote{The authors are well aware that storage systems are created
 by pooling togther disks, but this is transparent for the user, and typically
 not used when accounting for resource consumption.} is almost always shared
-among several parties, with each of these participants use a part of the
+among several parties, with each of these participants using a part of the
 resource. Futhermore the usage of each participant will vary over time, and as
-data tend to be long-lived there is no fixed start and end time of the 
+data tend to be long-lived there is no fixed start and end time of the resource
+consumption.
 
 % integrals and spikes
 To exactly measure the amount of consumed resource\ldots

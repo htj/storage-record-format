@@ -12,10 +12,10 @@ Many of the properties presented in this section are optional, however a few
 are not. For the required properties, it is explicitly listed, that they must
 be present in the record. None of the properties are allowed to be repeated.
 
-A record should only represent a single identity. This identity either be a
+A record should only represent a single identity. This identity can either be a
 person of a group of users. If a record contains both user and group
 information, the implementation should assume that the resources have been
-consumed by the listed user in the context of the group information.
+consumed by the user in the context of the group information.
 
 
 %each field should have:
@@ -29,19 +29,19 @@ consumed by the listed user in the context of the group information.
 
 \subsection{RecordIdentity}
 
-This property describe the identity of the record. The field has to attributes:
-recordId and createTime. The recordId attribute of the type string and should
-be constructed in such a way that it is globally unique and records with the
-same value is not generated accidentally. Hence this field can be used to identify
-the record, and provide a basis for duplicate detection. The createTime
-attribute is an ISO timestamp describing when the record was created.
+This property describes the identity of the record. The field has two
+attributes: recordId and createTime. The recordId should be constructed in such
+a way that it is globally unique and records with the same value is not
+generated accidentally. Hence this field can be used to identify the record,
+and be used duplicate detection. The createTime attribute describes when the
+record was created.
 
 The field is similar to the field with the same name in the Usage Record
 standard.
 
 \begin{itemize}
 \item The RecordIdentity property MUST be present in the record.
-\item The RecordIdentity field MUST NOT have any value.
+\item The RecordIdentity field MUST NOT have a value.
 \item The recordId attribute MUST be present in the record.
 \item The recordId attribute MUST have the type string.
 \item The createTime attribute MUST be present in the record.
@@ -60,9 +60,9 @@ ns:recordId="host.example.org/sr/87912469269276"/>
 \subsection{StorageSystem}
 
 This property describes the storage system on which the resources has been
-consumed. This value should be chosen in such a way that it globally
-identifies the storage system, on which resource is being consumed. E.g., the
-FQDN of the storage system could be used.
+consumed. This value should be chosen in such a way that it globally identifies
+the storage system, on which resources are being consumed. E.g., the FQDN of
+the storage system could be used.
 
 In grid lingo, this would be a storage element.
 
@@ -102,9 +102,9 @@ This property has previously been named StoragePartition.
 \subsection{StorageMedia}
 
 This property describes the media type of storage is accounted for in the
-record, e.g., ''disk'' or tape. This allows for explicit accounting for
-different types for backend storage. This field should not be used of the data
-accounted for in the record is on different media types.
+record, e.g., ``disk'' or ``tape''. This allows for accounting of different
+backend storage types. This field should not be used if the data accounted for
+in the record is on different media types.
 
 The following values must be understood by the implementation at which records
 are registered to: ``tape'', ``disk'', and ``solidstatedisk''.
@@ -157,9 +157,9 @@ record.
 
 \subsection{DirectoryPath}
 
-This property describe the directory path being accounted for (if available).
-If the property is included in the record, the record should account for all
-usage in the directory and only that directory.
+This property describes the directory path being accounted for. If the property
+is included in the record, the record should account for all usage in the
+directory and only that directory.
 
 
 \begin{itemize}
@@ -239,10 +239,10 @@ VO name.
 
 \subsection{GroupPartition}
 
-The part of a group accountable for the resource consumption. This is useful
-in some projects which has several sub-groups where each group is accountable
-for their resource consumption. In grid terms this would typically be a group
-within a VO.
+The part of a group accountable for the resource consumption. This is useful in
+some projects which has several sub-groups which are each accountable for their
+resource consumption. In grid terms this would typically be a group within a
+VO.
 
 \begin{itemize}
 \item The GroupPartition field type MUST be a string.
@@ -281,9 +281,9 @@ certain security infrastructures. In grid terms, this would be CA issuing the
 certificate for the group.
 
 \begin{itemize}
-\item The GroupRole field type MUST be a string.
-\item The GroupRole property MUST exist in the record of GroupPartition is
-    specified.
+\item The GroupAuthority field type MUST be a string.
+\item The GroupAuthority property MUST exist in the record of GroupPartition
+    is specified.
 \end{itemize}
 
 {\bf Example}
@@ -313,11 +313,11 @@ made.
 
 \subsection{ValidDuration}
 
-A duration indicating for how long time the measurement is valid. The record
-must only be used accounting for the time frame in which it is valid. The
-generation of records should be performed in such a way, that gaps should not
-occur. Note that a new record can be ``nullified'' if a newer record is
-manifested, i.e., the most recent information should be used.
+A duration indicating for how long time the measurement is valid from its
+measurement time. The record must only be used accounting for the time frame in
+which it is valid. The generation of records should be performed in such a way,
+that gaps should not occur. Note that a record can be ``nullified'' if a newer
+record is manifested, i.e., the most recent information should be used.
 
 \begin{itemize}
 \item The ValidDuration field SHOULD be present in the record.
@@ -339,13 +339,13 @@ consumed, including reserved space.
 This property has previously been known as SpaceAllocated and SpaceUsed.
 
 \begin{itemize}
-\item The SpaceAllocated property SHOULD be present in the record.
-\item The SpaceAllocated field type MUST be a positive integer.
+\item The CapacityUsed property SHOULD be present in the record.
+\item The CapacityUsed field type MUST be a positive integer.
 \end{itemize}
 
 {\bf Example}
 \begin{verbatim}
-<ns:SpaceAllocated>13617</ns:SpaceAllocated>
+<ns:CapacityUsed>13617</ns:CapacityUsed>
 \end{verbatim}
 
 \subsubsection*{Implementation Note}
@@ -360,19 +360,19 @@ limits (a signed 64-bit integer will overflow at 8 Terabyte).
 \subsection{CapacityReserved}
 
 An integer denoting the number of bytes reserved on the storage system, i.e.,
-space which has been allocated, but which is not filled with actual data. This
-amount should be included in the SpaceAllocated property, but this field can be
-used to describe exactly how much of the allocated space is reserved.
+space that has been allocated, but is not filled with actual data. This amount
+should be included in the SpaceAllocated property, but this field can be used
+to describe how much of the allocated space is reserved.
 
 This property has previously been known as SpaceReserved.
 
 \begin{itemize}
-\item The SpaceReserved field type MUST be a positive integer.
+\item The CapacityReserved field type MUST be a positive integer.
 \end{itemize}
 
 {\bf Example}
 \begin{verbatim}
-<ns:SpaceReserved>617</ns:SpaceReserved>
+<ns:CapacityReserved>617</ns:CapacityReserved>
 \end{verbatim}
 
 
@@ -400,8 +400,8 @@ any form of consumption, and can be a very tricky number to report.
 
 \item[Transfer Information] The original suggestion included properties for
 describing how much data has been transferred. There are however a range of
-issues with this: A. network resources are not storage resources. B:
-
+issues with this: A. network resources are not storage resources. B: Users
+transferring data, are not necessarily the user owning the data.
 
 \item[StartTime / EndTime] Has been replaced measurement time and valid
 duration as it was not really known when the actual measurement of the resource
