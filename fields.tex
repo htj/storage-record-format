@@ -330,7 +330,7 @@ record is manifested, i.e., the most recent information should be used.
 \end{verbatim}
 
 
-\subsection{CapacityUsed}
+\subsection{ActualCapacityUsed}
 
 An integer denoting the number of bytes used on the storage system. This is the
 main metric for measuring resource consumption. It should include all resources
@@ -339,13 +339,13 @@ consumed, including reserved space.
 This property has previously been known as SpaceAllocated and SpaceUsed.
 
 \begin{itemize}
-\item The CapacityUsed property SHOULD be present in the record.
-\item The CapacityUsed field type MUST be a positive integer.
+\item The ActualCapacityUsed property SHOULD be present in the record.
+\item The ActualCapacityUsed field type MUST be a positive integer.
 \end{itemize}
 
 {\bf Example}
 \begin{verbatim}
-<ns:CapacityUsed>13617</ns:CapacityUsed>
+<ns:ActualCapacityUsed>14728</ns:ActualCapacityUsed>
 \end{verbatim}
 
 \subsubsection*{Implementation Note}
@@ -355,6 +355,26 @@ used as a base. However, this also means that the number reported can be very
 high. Therefore any implementation should use at least a 64-bit integer to hold
 this variable. However it is highly recommend to use a data type with no upper
 limits (a signed 64-bit integer will overflow at 8 Terabyte).
+
+
+\subsection{LogicalCapacityUsed}
+
+An integer denoting the number of ``logical'' bytes used on the storage system
+by the identity in the record. By `logical'' is meant the sum of the files
+stored, i.e., excluding reservation, and any underlying replicas of files.
+
+\begin{itemize}
+\item The LogicalCapacityUsed field type MUST be a positive integer.
+\end{itemize}
+
+{\bf Example}
+\begin{verbatim}
+<ns:LogicalCapacityUsed>13617</ns:LogicalCapacityUsed>
+\end{verbatim}
+
+\subsubsection*{Implementation Note}
+
+Same as for ActualCapacityUsed property.
 
 
 \subsection{CapacityReserved}
