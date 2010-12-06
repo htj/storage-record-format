@@ -16,7 +16,7 @@ system.
   <ns:StorageSystem>host.example.org</ns:StorageSystem>
   <ns:MeasureTime>2010-10-11T09:31:40Z</ns:MeasureTime>
   <ns:ValidDuration>PT3600S</ns:ValidDuration>
-  <ns:CapacityAllocated>13617</ns:SpaceAllocated>
+  <ns:ActualCapacityUsed>13617</ns:ActualCapacityUsed>
 </ns:StorageUsageRecord>
 \end{verbatim}
 
@@ -33,7 +33,23 @@ system.
 \subsection{Grid Usage Example}
 
 \begin{verbatim}
-.
+<ns:StorageUsageRecord xmlns:ns="http://example.org/DRAFT/namespaces/2010/11/storagerecord">
+  <ns:RecordIdentity ns:createTime="2010-11-09T09:06:52Z"
+                     ns:recordId="host.example.org/sr/87912469269276"/>
+  <ns:StorageSystem>host.example.org</ns:StorageSystem>
+  <ns:StorageShare>pool-003</ns:StorageShare>
+  <ns:StorageType>disk</ns:StorageType>
+  <ns:FileCount>4</ns:FileCount>
+  <ns:MeasureTime>2010-10-11T09:31:40Z</ns:MeasureTime>
+  <ns:ValidDuration>PT3600S</ns:ValidDuration>
+  <ns:ActualCapacityUsed>14728</ns:ActualCapacityUsed>
+  <ns:LogicalCapacityUsed>13617</ns:LogicalCapacityUsed>
+  <ns:UserIdentity>/O=Grid/OU=example.org/CN=John Doe</ns:UserIdentity>
+  <ns:Group>binarydataproject.example.org</ns:Group>
+  <ns:GroupPartition>ukusers</ns:GroupPartition>
+
+</ns:StorageUsageRecord>
+
 \end{verbatim}
 
 
