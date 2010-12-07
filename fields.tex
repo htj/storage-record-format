@@ -381,23 +381,47 @@ stored, i.e., excluding reservation, and any underlying replicas of files.
 Same as for ResourceCapacityUsed property.
 
 
-\subsection{CapacityReserved}
+\subsection{ResourceCapacityReserved}
 
 An integer denoting the number of bytes reserved on the storage system, i.e.,
-space that has been allocated, but is not filled with actual data. This amount
-should be included in the SpaceAllocated property, but this field can be used
-to describe how much of the allocated space is reserved.
+space that has been allocated, but is not filled with actual data. The
+seperaction between logical and resource is the same as the fields for capacity
+usage.
+
+This amount should be included in the ResourceCapacityUsed property, but this
+field can be used to describe how much of the used capacity is reserved.
 
 This property has previously been known as SpaceReserved.
 
 \begin{itemize}
-\item The CapacityReserved field type MUST be a positive integer.
+\item The ResourceCapacityReserved field type MUST be a positive integer.
 \end{itemize}
 
 {\bf Example}
 \begin{verbatim}
-<ns:CapacityReserved>617</ns:CapacityReserved>
+<ns:ResourceCapacityReserved>617</ns:ResourceCapacityReserved>
 \end{verbatim}
+
+
+\subsection{LogicalCapacityReserved}
+
+An integer denoting the number of bytes reserved on the storage system, i.e.,
+space that has been allocated, but is not filled with actual data. The
+seperaction between logical and resource is the same as the fields for capacity
+usage.
+
+This amount should be included in the LogicalCapacityUsed property, but this
+field can be used to describe how much of the allocated space is reserved.
+
+\begin{itemize}
+\item The LogicalCapacityReserved field type MUST be a positive integer.
+\end{itemize}
+
+{\bf Example}
+\begin{verbatim}
+<ns:LogicalCapacityReserved>617</ns:LogicalCapacityReserved>
+\end{verbatim}
+
 
 
 \section{Intentionally Left Out Properties}
@@ -417,6 +441,9 @@ grouping is often defined elsewhere, and is not always static.
 per-file accounting, or allow certain files to be accounted for separately.
 However the number of files stored can be very large, and file names occasionally
 contain sensitive information.
+
+\item[File Metadata] The focus of the record is accounting. any per-file data
+or metadata has been declared out of scope of the record.
 
 \item[SpaceAvailable] This property would describe how much space is available
 for the identity on the storage system. This property would however not report
