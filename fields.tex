@@ -330,7 +330,7 @@ record is manifested, i.e., the most recent information should be used.
 \end{verbatim}
 
 
-\subsection{ActualCapacityUsed}
+\subsection{ResourceCapacityUsed}
 
 An integer denoting the number of bytes used on the storage system. This is the
 main metric for measuring resource consumption. It should include all resources
@@ -339,13 +339,13 @@ consumed, including reserved space.
 This property has previously been known as SpaceAllocated and SpaceUsed.
 
 \begin{itemize}
-\item The ActualCapacityUsed property SHOULD be present in the record.
-\item The ActualCapacityUsed field type MUST be a positive integer.
+\item The ResourceCapacityUsed property SHOULD be present in the record.
+\item The ResourceCapacityUsed field type MUST be a positive integer.
 \end{itemize}
 
 {\bf Example}
 \begin{verbatim}
-<ns:ActualCapacityUsed>14728</ns:ActualCapacityUsed>
+<ns:ResourceCapacityUsed>14728</ns:ResourceCapacityUsed>
 \end{verbatim}
 
 \subsubsection*{Implementation Note}
@@ -374,7 +374,7 @@ stored, i.e., excluding reservation, and any underlying replicas of files.
 
 \subsubsection*{Implementation Note}
 
-Same as for ActualCapacityUsed property.
+Same as for ResourceCapacityUsed property.
 
 
 \subsection{CapacityReserved}
