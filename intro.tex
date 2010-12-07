@@ -4,14 +4,14 @@
 \subsection{Measuring Storage Resource Consumption}
 
 % storeage resource intro
-Measuring consumption of storage resources is distintively different from
-measuing consumption of batch jobs. Where jobs typically have exclusive access
-to a set of resource (cpu cores) for a given amount of time, a storage
+Measuring consumption of storage resources is distinctively different from
+measuring consumption of batch jobs. Where jobs typically have exclusive access
+to a set of resource (CPU cores) for a given amount of time, a storage
 resource\footnote{The authors are well aware that storage systems are created
-by pooling togther disks, but this is transparent for the user, and typically
+by pooling together disks, but this is transparent for the user, and typically
 not used when accounting for resource consumption.} is almost always shared
 among several parties, with each of these participants using a part of the
-resource. Futhermore the usage of each participant will vary over time, and as
+resource. Furthermore the usage of each participant will vary over time, and as
 data tend to be long-lived there is no fixed start and end time of the resource
 consumption.
 
@@ -50,5 +50,10 @@ To see examples of records, see Section~\ref{sec:record-examples}
 
 \subsection{Including Additional Information}
 
-Write me\ldots
+It is allowed to add additional fields with information in the record, e.g.,
+for more accurate description of the data that has consumed the resources.
+
+It should be avoided to add personal identity or group information in any
+additional fields, as that makes automatic removal of identity information
+impossible.
 
