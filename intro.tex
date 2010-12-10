@@ -1,15 +1,13 @@
 \section{Introduction}
 
-
 \subsection{Measuring Storage Resource Consumption}
 
 % storeage resource intro
 Measuring consumption of storage resources is distinctively different from
-measuring consumption of batch jobs. Where jobs typically have exclusive access
+the measurement of the consumption of computing resources in batch jobs. 
+While jobs typically have exclusive access
 to a set of resources (CPU cores) for a given amount of time, a storage
-resource\footnote{The authors are well aware that storage systems are created
-by pooling together disks, but this is transparent for the user, and typically
-not used when accounting for resource consumption.} is almost always shared
+resource is almost always shared
 among several parties, with each of these participants using a part of the
 resource. Furthermore, the usage of each participant will vary over time, and as
 data tend to be long-lived there is no fixed start and end time of the resource
@@ -18,21 +16,49 @@ consumption.
 % integrals and spikes
 To exactly measure the amount of consumed resource\ldots
 
+\subsection{Context}
+The specifications that are made in the following are based
+on a context that the reader needs to comprehend.
+\begin{itemize}
+ \item A \textit{storage resource} is a logical resource (either local or distributed) 
+that allows an individual user or a group of users to store data. Such a system 
+can contain single disks or can be created by pooling together physical storage 
+media. This is transparent to the user and does not need to be considered when accounting for resource consumption.
+ \item \textit{Storage accounting} is the recording and summarizing of the comsumption 
+of a storage resource by an individual user or a group of users in a specified 
+time frame.
+\end{itemize}
+
+\subsection{What this document is not}
+This document does not address in detail how these records should be used, 
+how the accounting data are aggregated 
+nor does it attempt to dictate the format in which the accounting records are 
+stored at a local site. 
+Furthermore, nothing is said regarding the communication mechanisms
+employed to exchange the records, i.e. transport layer, framing, 
+authentication, integrity, etc.
 
 
-\subsection{Record Structure}
+\subsection{Conventions Used in this Document}
+The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", 
+"SHOULD", "SHOULD NOT", "RECOMMENDED",  "MAY", and 
+"OPTIONAL" in this document are to be interpreted as described in
+RFC 2119 \cite{rfc2119}.
+
+
+\subsection{Structure of the StAR format}
 
 The structure of the format described in this document can be split into
-logical parts, each describing an aspect of the resource consumption. The parts
-are:
+logical parts, each describing an aspect of the resource consumption. 
+The parts are:
 
 \begin{description}
 
-\item[Resource] Fields describing the system the resource was consumed on. Can
-specify a certain subsystem of the storage system.
+\item[Resource] Fields describing the system the resource was consumed on. They 
+can specify a certain subsystem of the storage system.
 
-\item[Consumption Details] Fields describing what is consuming the data. E.g.,
-storage classes, number of files, directory path, etc.
+\item[Consumption Details] Fields describing what the data is consuming, e.g. 
+storage classes, directory path, etc.
 
 \item[Identity] Fields describing the person or group accountable for the
 resource consumption.
@@ -42,18 +68,7 @@ resource has been used.
 
 \end{description}
 
-Please note that this organization, is not directly reflected in record format.
-It is merely a good mental model to have in mind.
+Please note, that these logical parts are not directly reflected in record 
+format. They are merely a good mental model to have in mind.
 
 To see examples of records, see Section~\ref{sec:record-examples}
-
-
-\subsection{Including Additional Information}
-
-It is allowed to add additional fields with information in the record, e.g.,
-for more accurate description of the data that has consumed the resources.
-
-It should be avoided to add personal identity or group information in any
-additional fields, as that makes automatic removal of identity information
-impossible.
-

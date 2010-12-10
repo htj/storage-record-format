@@ -4,13 +4,19 @@
 
 \vspace{1cm}
 
-{\Large \bf Storage Record - Format Specification}
+\begin{center}
+{\Large \bf StAR 
+\\Storage Accounting Record}
+\end{center}
+
+\begin{center}
+{\Large - Format Specification -}
+\end{center}
 
 \vspace{1.5cm}
 
 \large{Authors:\\
-Henrik Thostrup Jensen\\
-more... (I hope)
+Henrik Thostrup Jensen, Paul Millar, Zsolt Molnar, Ralph M\"uller-Pfefferkorn, Jon Kerr Nilsen, Riccardo Zappi
 }
 
 \vspace{0.5cm}
@@ -21,16 +27,17 @@ To enable a shared storage infrastructure, it must be possible to account and
 report the resources consumed by persons and groups in a common format. This
 document describes such a format, which can describe the storage resources
 consumed on a storage system. The format allows for granularity on storage
-system level (e.g., seperating disk and tape consumption) as well as as
-allowing reporting on both per-user or per-group.
+system level (e.g. seperating disk and tape consumption) as well as as
+allowing reporting on both a per-user or a per-group base.
+Due to a general approach the StAR format is not restricted to the usage in
+a distributed (Grid) environment but can be applied in any storage environment.
 
 \vspace{.5cm}
 
 \noindent
-This document does not address how the record should be exchanged.
-
 
 \vspace{2cm}
 
 Last modified: \today
+
 

@@ -422,41 +422,53 @@ Same as for ResourceCapacityUsed property.
 %<ns:LogicalCapacityReserved>617</ns:LogicalCapacityReserved>
 %\end{verbatim}
 
+\subsection{Including Additional Information}
 
+It is allowed to add additional fields with information in the record, e.g.,
+for more accurate description of the data that has consumed the resources.
+
+It should be avoided to add personal identity or group information in any
+additional fields, as that makes automatic removal of identity information
+impossible.
 
 \section{Intentionally Left Out Properties}
 
-Note: These are still under discussion.
-
-These should be removed in the final standard, but are in the draft for
-discussion purposes.
+% Note: These are still under discussion.
+% These should be removed in the final standard, but are in the draft for
+% discussion purposes.
+In the preparation phase yielding the current draft of the record a number of
+properties were in discussion to be included. They are listed here for the sake 
+of completeness.
 
 \begin{description}
 
-\item[Site] This property would identify the site, as which the storage system
+\item[Site] This property would identify the site, at which the storage system
 is located, allowing easy grouping of several storage systems. However such a
-grouping is often defined elsewhere, and is not always static.
+grouping is often defined elsewhere and is not always static.
 
-\item[FileNames] Providing a list of file names in a record, would allow
+\item[FileNames] Providing a list of file names in the record would allow
 per-file accounting, or allow certain files to be accounted for separately.
-However the number of files stored can be very large, and file names occasionally
-contain sensitive information.
+However, the available properties like path, storage system, group, and 
+user provide a sufficient definition of the resource consumption.
+% However the number of files stored can be very large, and file names 
+% occasionally contain sensitive information.
 
-\item[File Metadata] The focus of the record is accounting. any per-file data
-or metadata has been declared out of scope of the record.
+\item[File Metadata] The focus of the record is accounting. Any per-file data
+or metadata are out of scope of the record.
 
 \item[SpaceAvailable] This property would describe how much space is available
 for the identity on the storage system. This property would however not report
-any form of consumption, and can be a very tricky number to report.
+any form of consumption and is mostly hard to determine.
 
 \item[Transfer Information] The original suggestion included properties for
 describing how much data has been transferred. There are however a range of
 issues with this: A. network resources are not storage resources. B: Users
-transferring data, are not necessarily the user owning the data.
+transferring data are not necessarily the user owning the data. Thus, the  
+accounting of the network usage should be defined elsewhere.
 
-\item[StartTime / EndTime] Has been replaced measurement time and valid
-duration as it was not really known when the actual measurement of the resource
-consumption was taken.
+\item[StartTime / EndTime] They have been replaced by measurement time and 
+valid duration as it is not really known when the actual measurement of the 
+resource consumption is taken.
 
 \end{description}
 
