@@ -23,10 +23,11 @@ on a context that the reader needs to comprehend.
  \item A \textit{storage resource} is a logical resource (either local or distributed) 
 that allows an individual user or a group of users to store data. Such a system 
 can contain single disks or can be created by pooling together physical storage 
-media. This is transparent to the user and does not need to be considered when accounting for resource consumption.
- \item \textit{Storage accounting} is the recording and summarizing of the comsumption 
-of a storage resource by an individual user or a group of users in a specified 
-time frame.
+media. This is transparent to the user and does not need to be considered when 
+accounting for resource consumption.
+ \item \textit{Storage accounting} is the recording and summarizing of the 
+consumption of a storage resource by an individual user or a group of users in a 
+specified time frame.
 \end{itemize}
 
 \subsection{What this document is not}
@@ -45,6 +46,18 @@ The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT",
 "OPTIONAL" in this document are to be interpreted as described in
 RFC 2119 \cite{rfc2119}.
 
+
+\subsection{Contents of the StAR format}
+A storage record may contain the following information:
+\begin{description}
+\item[Information that is common to all files] This may be the identity of the 
+user(s) who wrote this data, QoS profile of the data, etc. This is likely to be 
+the selection criteria for this record. 
+\item[Information that is an aggregate over selected files] For example, the 
+number of files, storage capacity used to store these files, number of bytes 
+transferred, etc. 
+\end{description}
+All other kinds of information are excluded.
 
 \subsection{Structure of the StAR format}
 
