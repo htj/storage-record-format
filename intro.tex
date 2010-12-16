@@ -16,20 +16,6 @@ consumption.
 % integrals and spikes
 To exactly measure the amount of consumed resource\ldots
 
-\subsection{Context}
-The specifications that are made in the following are based
-on a context that the reader needs to comprehend.
-\begin{itemize}
- \item A \textit{storage resource} is a logical resource (either local or distributed) 
-that allows an individual user or a group of users to store data. Such a system 
-can contain single disks or can be created by pooling together physical storage 
-media. This is transparent to the user and does not need to be considered when 
-accounting for resource consumption.
- \item \textit{Storage accounting} is the recording and summarizing of the 
-consumption of a storage resource by an individual user or a group of users in a 
-specified time frame.
-\end{itemize}
-
 \subsection{What this document is not}
 This document does not address in detail how these records should be used, 
 how the accounting data are aggregated 
@@ -38,13 +24,6 @@ stored at a local site.
 Furthermore, nothing is said regarding the communication mechanisms
 employed to exchange the records, i.e. transport layer, framing, 
 authentication, integrity, etc.
-
-
-\subsection{Conventions Used in this Document}
-The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", 
-"SHOULD", "SHOULD NOT", "RECOMMENDED",  "MAY", and 
-"OPTIONAL" in this document are to be interpreted as described in
-RFC 2119 \cite{rfc2119}.
 
 
 \subsection{Record Structure \& Content}
