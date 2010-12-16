@@ -93,10 +93,7 @@ To see examples of records, see Section~\ref{sec:record-examples}
 It is allowed to add additional fields with information in the record, e.g.,
 for more accurate description of the data that has consumed the resources.
 
-It should be avoided to add personal identity or group information in any
-additional fields, as that makes automatic removal of identity information
-impossible.
-
-
-
+If any user or group information is added it must be added under the
+SubjectIdentity block. This makes it possible to automatically remove user
+and group information.
 

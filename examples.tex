@@ -24,12 +24,28 @@ system.
 
 \subsection{Local Usage Example}
 
+Example for how a record accouting for a local user could look.
 
 \begin{verbatim}
-.
+<ns:StorageUsageRecord
+ xmlns:ns="http://example.org/DRAFT/namespaces/2010/11/storagerecord">
+  <ns:RecordIdentity ns:createTime="2010-11-09T09:06:52Z"
+                     ns:recordId="host.example.org/sr/87912469269276"/>
+  <ns:StorageSystem>host.example.org</ns:StorageSystem>
+  <ns:SubjectIdentity>
+    <ns:LocalUserName>johndoe</ns:LocalUserName>
+  </ns:SubjectIdentity>
+  <ns:StorageType>tape</ns:StorageType>
+  <ns:FileCount>18</ns:FileCount>
+  <ns:MeasureTime>2010-10-11T09:31:40Z</ns:MeasureTime>
+  <ns:ValidDuration>PT3600S</ns:ValidDuration>
+  <ns:ResourceCapacityUsed>913617</ns:ResourceCapacityUsed>
+</ns:StorageUsageRecord>
+
+
 \end{verbatim}
 
-
+Example for how a record accouting for grid usage could look.
 
 \subsection{Grid Usage Example}
 
@@ -40,14 +56,16 @@ system.
                      ns:recordId="host.example.org/sr/87912469269276"/>
   <ns:StorageSystem>host.example.org</ns:StorageSystem>
   <ns:StorageShare>pool-003</ns:StorageShare>
+  <ns:SubjectIdentity>
+    <ns:Group>binarydataproject.example.org</ns:Group>
+    <ns:GroupPartition>ukusers</ns:GroupPartition>
+  </ns:SubjectIdentity>
   <ns:StorageType>disk</ns:StorageType>
   <ns:FileCount>4</ns:FileCount>
   <ns:MeasureTime>2010-10-11T09:31:40Z</ns:MeasureTime>
   <ns:ValidDuration>PT3600S</ns:ValidDuration>
   <ns:ResourceCapacityUsed>14728</ns:ResourceCapacityUsed>
   <ns:LogicalCapacityUsed>13617</ns:LogicalCapacityUsed>
-  <ns:Group>binarydataproject.example.org</ns:Group>
-  <ns:GroupPartition>ukusers</ns:GroupPartition>
 </ns:StorageUsageRecord>
 \end{verbatim}
 

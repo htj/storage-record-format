@@ -174,12 +174,35 @@ directory and only that directory.
 
 % identity block
 
+\subsection{SubjectIdentity}
+
+This property is a container for all user and group properties. The property
+itself should be able. The purpose of the property is to clearly mark a
+property as describing a user or group, i.e., then entity accountable for the
+resource consumption. The property is similar to the UserIdentity block in the
+OGF Usage Record format, but it also
+
+\begin{itemize}
+\item The SubjectIdentity property SHOULD be present in the record.
+\item The SubjectIdentity property SHOULD include at least one subelement.
+\item The SubjectIdentity field MUST NOT exist.
+\end{itemize}
+
+{\bf Example}
+\begin{verbatim}
+<ns:SubjectIdentity>
+</ns:SubjectIdentity>
+\end{verbatim}
+
+
 \subsection{LocalUserName}
 
 The local user name of the storage system accountable for the resource
 consumption. Can be OS level or an internal user name in the storage system.
 
 \begin{itemize}
+\item If included, the LocalUserName property MUST be under the
+SubjectIdentity.
 \item The LocalUserName field type MUST be a string.
 \end{itemize}
 
@@ -195,6 +218,8 @@ The local user group of the storage system accountable for the resource
 consumption. Can be OS level or an internal group in the storage system.
 
 \begin{itemize}
+\item If included, the LocalUserGroup property MUST be under the
+SubjectIdentity.
 \item The LocalGroupName field type MUST be a string.
 \end{itemize}
 
@@ -211,6 +236,8 @@ property should identity the user globally, such that clashes does not happen
 accidentally, e.g., it could be an X509 identity.
 
 \begin{itemize}
+\item If included, the UserIdentity property MUST be under the
+SubjectIdentity.
 \item The UserIdentity field type MUST be a string.
 \end{itemize}
 
@@ -228,6 +255,7 @@ e.g., using a FQDN to construct it. In grid terms, this would typically be the
 VO name.
 
 \begin{itemize}
+\item If included, the Group property MUST be under the SubjectIdentity.
 \item The Group field type MUST be a string.
 \end{itemize}
 
@@ -245,6 +273,8 @@ resource consumption. In grid terms this would typically be a group within a
 VO.
 
 \begin{itemize}
+\item If included, the GroupPartition property MUST be under the
+SubjectIdentity.
 \item The GroupPartition field type MUST be a string.
 \item The Group property MUST exist in the record of GroupPartition is
     specified.
@@ -263,6 +293,7 @@ used to denote special tasks within a group or similar. In grid terms, this
 would be the role in a VO.
 
 \begin{itemize}
+\item If included, the GroupRole property MUST be under the SubjectIdentity.
 \item The GroupRole field type MUST be a string.
 \item The Group property MUST exist in the record of GroupRole is specified.
 \end{itemize}
@@ -281,6 +312,8 @@ certain security infrastructures. In grid terms, this would be CA issuing the
 certificate for the group.
 
 \begin{itemize}
+\item If included, the GroupAuthority property MUST be under the
+SubjectIdentity.
 \item The GroupAuthority field type MUST be a string.
 \item The GroupAuthority property MUST exist in the record of GroupPartition
     is specified.
