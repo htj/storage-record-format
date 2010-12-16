@@ -47,22 +47,11 @@ The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT",
 RFC 2119 \cite{rfc2119}.
 
 
-\subsection{Contents of the StAR format}
-A storage record may contain the following information:
-\begin{description}
-\item[Information that is common to all files] This may be the identity of the
-user(s) accountable for the data, QoS profile of the data, etc. This is likely
-to be the selection criteria for this record.
-\item[Information that is an aggregate over selected files] For example, the 
-number of files, storage capacity used to store these files, number of bytes 
-transferred, etc. 
-\end{description}
-All other kinds of information are excluded.
-
-\subsection{Structure of the StAR format}
+\subsection{Record Structure \& Content}
 
 The structure of the format described in this document can be split into
-logical parts, each describing an aspect of the resource consumption. 
+logical parts, each describing an aspect of the resource consumption.
+
 The parts are:
 
 \begin{description}
@@ -73,16 +62,26 @@ can specify a certain subsystem of the storage system.
 \item[Consumption Details] Fields describing what the data is consuming, e.g. 
 storage classes, directory path, etc.
 
-\item[Identity] Fields describing the person or group accountable for the
-resource consumption.
+\item[Identity] Describes the person or group accountable for the resource
+consumption.
 
 \item[Resource Consumption] Fields describing how much of the described
 resource has been used.
 
 \end{description}
 
-Please note, that these logical parts are not directly reflected in record 
-format. They are merely a good mental model to have in mind.
+Please note, that these logical sections are not necessarely directly reflected
+in record format. They are merely a good mental model to have in mind.
+
+Most of the information in the record is common to all files, e.g., resource or
+identity description. Certain fields are aggregates over the consumed
+resources. This includes the consumption itself, but can also be consumption
+details, such as number of files.
+
+The record is not intended to be used for describing intricate information
+about the consumption. E.g., files names or per-file data, or application
+metadata should not be included in the record. Such details are out of scope
+for the record, and are not important for accounting of resource consumption.
 
 To see examples of records, see Section~\ref{sec:record-examples}
 
