@@ -381,47 +381,6 @@ Same as for ResourceCapacityUsed property.
 
 
 
-%\subsection{ResourceCapacityReserved}
-%
-%An integer denoting the number of bytes reserved on the storage system, i.e.,
-%space that has been allocated, but is not filled with actual data. The
-%seperaction between logical and resource is the same as the fields for capacity
-%usage.
-%
-%This amount should be included in the ResourceCapacityUsed property, but this
-%field can be used to describe how much of the used capacity is reserved.
-%
-%This property has previously been known as SpaceReserved.
-%
-%\begin{itemize}
-%\item The ResourceCapacityReserved field type MUST be a positive integer.
-%\end{itemize}
-%
-%{\bf Example}
-%\begin{verbatim}
-%<ns:ResourceCapacityReserved>617</ns:ResourceCapacityReserved>
-%\end{verbatim}
-%
-%
-%\subsection{LogicalCapacityReserved}
-%
-%An integer denoting the number of bytes reserved on the storage system, i.e.,
-%space that has been allocated, but is not filled with actual data. The
-%seperaction between logical and resource is the same as the fields for capacity
-%usage.
-%
-%This amount should be included in the LogicalCapacityUsed property, but this
-%field can be used to describe how much of the allocated space is reserved.
-%
-%\begin{itemize}
-%\item The LogicalCapacityReserved field type MUST be a positive integer.
-%\end{itemize}
-%
-%{\bf Example}
-%\begin{verbatim}
-%<ns:LogicalCapacityReserved>617</ns:LogicalCapacityReserved>
-%\end{verbatim}
-
 \subsection{Including Additional Information}
 
 It is allowed to add additional fields with information in the record, e.g.,
