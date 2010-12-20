@@ -378,6 +378,10 @@ This property has previously been known as SpaceAllocated and SpaceUsed.
 \begin{itemize}
 \item The ResourceCapacityUsed property SHOULD be present in the record.
 \item The ResourceCapacityUsed field type MUST be a positive integer.
+\item ResourceCapacityUsed SHOULD include all resources that are used to store
+      the files.  The value MAY also include resources that are no longer in use
+      but are unavailable for reuse, as documented in the appropriate SLA or
+      Usage-policy documents.
 \end{itemize}
 
 {\bf Example}
