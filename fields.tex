@@ -394,8 +394,7 @@ This property has previously been known as SpaceAllocated and SpaceUsed.
 Using bytes saves us from the argument of discussing if 1000 or 1024 should be
 used as a base. However, this also means that the number reported can be very
 high. Therefore any implementation should use at least a 64-bit integer to hold
-this variable. However it is highly recommend to use a data type with no upper
-limits (a signed 64-bit integer will overflow at 8 Petabyte).
+this variable (a signed 64-bit integer will overflow at 8 exabytes).
 
 
 \subsection{LogicalCapacityUsed}
