@@ -1,4 +1,3 @@
-
 \section{Record Properties}
 
 This section describes the record properties and their fields and attributes.
@@ -34,7 +33,8 @@ attributes: recordId and createTime. The recordId should be constructed in such
 a way that it is globally unique and records with the same value is not
 generated accidentally. Hence this field can be used to identify the record,
 and be used duplicate detection. The createTime attribute describes when the
-record was created.
+record was created. It might differ from the time when the resource usage
+was measured (see section \ref{MeasureTime})
 
 The field is similar to the field with the same name in the Usage Record
 standard.
@@ -329,7 +329,7 @@ SubjectIdentity.
 
 % consumption block
 
-\subsection{MeasureTime}
+\subsection{MeasureTime} \label{MeasureTime}
 
 A timestamp indicating when the measurement of the resource consumption was
 made.
