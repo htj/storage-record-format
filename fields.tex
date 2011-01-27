@@ -458,4 +458,47 @@ resource consumption is taken.
 
 \end{description}
 
+\section{Field Summary}
+
+\begin{tabular*}{\linewidth}{|p{0.25\linewidth}|p{0.3\linewidth}|p{2cm}|l|}
+\hline
+\textbf{Field} & \textbf{Short Description} & \textbf{Field Type} & \textbf{Requirement} \\
+\hline
+RecordIdentity&identity of the record&&\\
+attributes: &&&\\
+recordID & global unique record ID & String & REQUIRED \\
+createTime & record creation time & ISO time\-stamp & REQUIRED \\
+\hline
+StorageSystem & storage system description & String &  RECOMMENDED  \\
+\hline
+StorageShare & part of the storage system accounted for& String & OPTIONAL \\
+\hline
+StorageMedia & media type & String &  OPTIONAL\\
+\hline
+StorageClass & class of stored data& String & OPTIONAL \\
+\hline
+FileCount & number of files accounted for& positive non-zero Integer & OPTIONAL \\
+\hline
+DirectoryPath & directory path accounted for & String & OPTIONAL \\
+\hline
+SubjectIdentity & container for user and group properties & & RECOMMENDED \\
+elements:&&&\\
+LocalUserName & user name on the storage system & String & OPTIONAL \\
+LocalUserGroup & user group on the storage system & String & OPTIONAL \\
+UserIdentity & global user ID & String & OPTIONAL \\
+Group & global group & String & OPTIONAL \\
+GroupPartition & part of global group & String & OPTIONAL \\
+GroupRole & role of the global group & String & OPTIONAL \\
+GroupAuthority & authority to which the global group belongs to & String & OPTIONAL \\
+\hline
+MeasureTime & time of the measurement & ISO time\-stamp & RECOMMENDED \\
+\hline
+%ValidDuration & validity of the record & ISO timestamp & RECOMMENDED \\
+%\hline
+ResourceCapacityUsed & number of bytes used on storage system & positive Integer & RECOMMENDED \\
+\hline
+LogicalCapacityUsed & number of ``logical`` bytes used on the storage system & positive Integer & OPTIONAL \\
+\hline
+\end{tabular*}
+
 
