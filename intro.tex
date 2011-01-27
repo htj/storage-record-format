@@ -5,6 +5,27 @@
 % storeage resource intro
 Measuring consumption of storage resources is distinctively different from
 the measurement of the consumption of computing resources in batch jobs. 
+
+new:
+
+On a computing resource it is quite easy to continuously collect CPU 
+usage information with a high time resolution - the operating system itself does 
+it and an accounting system can access these data. Additionally,
+the resource usage data are usually strictly increasing, e.g. 
+CPU time or wall clock time.
+A collection of storage resource consumption is much harder
+to achieve. The usage of each participant will vary over time and only few 
+systems do permanently record the storage use of the single users or 
+groups with a fine granularity in time. 
+Usage snapshot are taken from time to time only
+resulting in a rough consumption estimation especially in environments
+with a high fluctuation rate. 
+Nevertheless, there is a need to do storage accounting both for the provider
+of storage resources and the users. It is the base for billing and for 
+the development of a storage infrastructure.
+
+old:
+
 While jobs typically have exclusive access
 to a set of resources (CPU cores) for a given amount of time, a storage
 resource is almost always shared
