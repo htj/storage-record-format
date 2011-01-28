@@ -1,3 +1,4 @@
+% !TeX root = sr.tex
 \section{Record Properties}
 
 This section describes the record properties and their fields and attributes.
@@ -32,7 +33,7 @@ This property describes the identity of the record. The field has two
 attributes: recordId and createTime. The recordId should be constructed in such
 a way that it is globally unique and records with the same value is not
 generated accidentally. Hence this field can be used to identify the record,
-and be used duplicate detection. The createTime attribute describes when the
+and be used for duplicate detection. The createTime attribute describes when the
 record was created. It might differ from the time when the resource usage
 was measured (see section \ref{MeasureTime})
 
@@ -112,12 +113,12 @@ are registered to: ``tape'', ``disk'', and ``solidstatedisk''.
 This property has previously been named StorageType.
 
 \begin{itemize}
-\item The StorageType field type MUST be a string.
+\item The StorageMedia field type MUST be a string.
 \end{itemize}
 
 {\bf Example}
 \begin{verbatim}
-<ns:StorageType>disk</ns:StorageType>
+<ns:StorageMedia>disk</ns:StorageMedia>
 \end{verbatim}
 
 
