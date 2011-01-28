@@ -1,3 +1,4 @@
+% !TeX root = sr.tex
 \section{Introduction}
 
 \subsection{Measuring Storage Resource Consumption}
@@ -5,9 +6,6 @@
 % storeage resource intro
 Measuring consumption of storage resources is distinctively different from
 the measurement of the consumption of computing resources in batch jobs. 
-
-new:
-
 On a computing resource it is quite easy to continuously collect CPU 
 usage information with a high time resolution - the operating system itself does 
 it and an accounting system can access these data. Additionally,
@@ -24,21 +22,27 @@ Nevertheless, there is a need to do storage accounting both for the provider
 of storage resources and the users. It is the base for billing and for 
 the development of a storage infrastructure.
 
-old:
-
-While jobs typically have exclusive access
-to a set of resources (CPU cores) for a given amount of time, a storage
-resource is almost always shared
-among several parties, with each of these participants using a part of the
-resource. Furthermore, the usage of each participant will vary over time, and as
-data tend to be long-lived there is no fixed start and end time of the resource
-consumption.
+% While jobs typically have exclusive access
+% to a set of resources (CPU cores) for a given amount of time, a storage
+% resource is almost always shared
+% among several parties, with each of these participants using a part of the
+% resource. Furthermore, the usage of each participant will vary over time, and as
+% data tend to be long-lived there is no fixed start and end time of the resource
+% consumption.
 
 % integrals and spikes
 %To exactly measure the amount of consumed resource\ldots
 
-\subsection{What this document is not}
-This document does not address in detail how these records should be used, 
+\subsection{About this document}
+In the following the StAR format 
+(\textbf{St}orage \textbf{A}ccouting \textbf{R}ecord) is described 
+that allows to report the usage of 
+storage resources. StAR tries to define a standardized way to exchange storage
+consumption data. Though it was developed in the context of distributed storage
+in a Grid environment it is not specific to such a storage infrastructure.
+Due to StAR's generic approach it can be used in any storage environment.
+
+This document does not address in detail how the StAR records should be used, 
 how the accounting data are aggregated 
 nor does it attempt to dictate the format in which the accounting records are 
 stored at a local site. 
@@ -51,21 +55,19 @@ authentication, integrity, etc.
 
 The structure of the format described in this document can be split into
 logical parts, each describing an aspect of the resource consumption.
-
-The parts are:
-
+The parts are
 \begin{description}
 
-\item[Resource] Fields describing the system the resource was consumed on. They 
+\item[Resource:] Fields describing the system the resource was consumed on. They 
 can specify a certain subsystem of the storage system.
 
-\item[Consumption Details] Fields describing what the data is consuming, e.g. 
+\item[Consumption Details:] Fields describing what the data is consuming, e.g. 
 storage classes, directory path, etc.
 
-\item[Identity] Describes the person or group accountable for the resource
+\item[Identity:] Describes the person or group accountable for the resource
 consumption.
 
-\item[Resource Consumption] Fields describing how much of the described
+\item[Resource Consumption:] Fields describing how much of the described
 resource has been used.
 
 \end{description}
@@ -73,24 +75,24 @@ resource has been used.
 Please note, that these logical sections are not necessarily directly reflected
 in record format. They are merely a good mental model to have in mind.
 
-Most of the information in the record is common to all files, e.g., resource or
+Most of the information in the record is common to all files, e.g. resource or
 identity description. Certain fields are aggregates over the consumed
 resources. This includes the consumption itself, but can also be consumption
 details, such as number of files.
 
 The record is not intended to be used for describing intricate information
-about the consumption. E.g., files names or per-file data, or application
+about the consumption. E.g., file names, per-file data or application
 metadata should not be included in the record. Such details are out of scope
-for the record, and are not important for accounting of resource consumption.
+for the record and are not important for accounting of resource consumption.
 
-To see examples of records, see Section~\ref{sec:record-examples}
+To see examples of records, see section~\ref{sec:record-examples}.
 
 
 % this might be a seperate section sometime, for now it is here
 \subsection{Including Additional Information}
 
-It is allowed to add additional fields with information in the record, e.g.,
-for more accurate description of the data that has consumed the resources.
+It is allowed to add additional fields with information in the record, e.g.
+for a more accurate description of the data that has consumed the resources.
 
 If any user or group information is added it must be added under the
 SubjectIdentity block. This makes it possible to automatically remove user

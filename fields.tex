@@ -1,3 +1,4 @@
+% !TeX root = sr.tex
 \section{Record Properties}
 
 This section describes the record properties and their fields and attributes.
@@ -8,11 +9,11 @@ duration formats are ISO types~\cite{iso8601}. These design choices are made in
 order to keep the format as close as possible to OGF usage record format.
 
 Many of the properties presented in this section are optional, however a few
-are not. For the required properties, it is explicitly listed, that they must
+are not. For the required properties, it is explicitly listed that they must
 be present in the record. None of the properties are allowed to be repeated.
 
 A record should only represent a single identity. This identity can either be a
-person of a group of users. If a record contains both user and group
+person or a group of users. If a record contains both user and group
 information, the implementation should assume that the resources have been
 consumed by the user in the context of the group information.
 
@@ -32,7 +33,7 @@ This property describes the identity of the record. The field has two
 attributes: recordId and createTime. The recordId should be constructed in such
 a way that it is globally unique and records with the same value is not
 generated accidentally. Hence this field can be used to identify the record,
-and be used duplicate detection. The createTime attribute describes when the
+and be used for duplicate detection. The createTime attribute describes when the
 record was created. It might differ from the time when the resource usage
 was measured (see section \ref{MeasureTime})
 
@@ -112,12 +113,12 @@ are registered to: ``tape'', ``disk'', and ``solidstatedisk''.
 This property has previously been named StorageType.
 
 \begin{itemize}
-\item The StorageType field type MUST be a string.
+\item The StorageMedia field type MUST be a string.
 \end{itemize}
 
 {\bf Example}
 \begin{verbatim}
-<ns:StorageType>disk</ns:StorageType>
+<ns:StorageMedia>disk</ns:StorageMedia>
 \end{verbatim}
 
 
@@ -364,7 +365,7 @@ record is manifested, i.e., the most recent information should be used.
 \end{verbatim}
 
 
-\subsection{ResourceCapacityUsed}
+\subsection{ResourceCapacityUsed} \label{ResourceCapacityUsed}
 
 An integer denoting the number of bytes used on the storage system. This is the
 main metric for measuring resource consumption. It should include all resources
@@ -400,8 +401,9 @@ this variable (a signed 64-bit integer will overflow at 8 exabytes).
 \subsection{LogicalCapacityUsed}
 
 An integer denoting the number of ``logical'' bytes used on the storage system
-by the identity in the record. By `logical'' is meant the sum of the files
-stored, i.e., excluding reservation, and any underlying replicas of files.
+by the identity in the record. By `logical'' is meant the sum of bytes of 
+the files stored, i.e., excluding reservation, and any underlying 
+replicas of files.
 
 \begin{itemize}
 \item The LogicalCapacityUsed field type MUST be a positive integer.
@@ -414,7 +416,8 @@ stored, i.e., excluding reservation, and any underlying replicas of files.
 
 \subsubsection*{Implementation Note}
 
-Same as for ResourceCapacityUsed property.
+Same as for ResourceCapacityUsed property 
+(see section \ref{ResourceCapacityUsed}).
 
 
 \section{Intentionally Left Out Properties}
