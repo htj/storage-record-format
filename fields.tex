@@ -68,7 +68,7 @@ the storage system could be used.
 In grid lingo, this would be a storage element.
 
 \begin{itemize}
-\item The StorageSystem property SHOULD be present in the record.
+\item The StorageSystem property MUST be present in the record.
 \item The StorageSystem field MUST have the type string.
 \item The StorageSystem value SHOULD be constructed in such a way, that it
     globally identifies the storage system.
@@ -472,7 +472,7 @@ attributes: &&&\\
 recordID & global unique record ID & String & REQUIRED \\
 createTime & record creation time & ISO time\-stamp & REQUIRED \\
 \hline
-StorageSystem & storage system description & String &  RECOMMENDED  \\
+StorageSystem & storage system description & String &  REQUIRED  \\
 \hline
 StorageShare & part of the storage system accounted for& String & OPTIONAL \\
 \hline
