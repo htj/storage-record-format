@@ -377,7 +377,7 @@ resource owner the usage policy.
 This property has previously been known as SpaceAllocated and SpaceUsed.
 
 \begin{itemize}
-\item The ResourceCapacityUsed property SHOULD be present in the record.
+\item The ResourceCapacityUsed property MUST be present in the record.
 \item The ResourceCapacityUsed field type MUST be a positive integer.
 \item ResourceCapacityUsed SHOULD include all resources that are used to store
       the files.  The value MAY also include resources that are no longer in use
@@ -498,7 +498,7 @@ MeasureTime & time of the measurement & ISO time\-stamp & RECOMMENDED \\
 \hline
 %ValidDuration & validity of the record & ISO timestamp & RECOMMENDED \\
 %\hline
-ResourceCapacityUsed & number of bytes used on storage system & positive Integer & RECOMMENDED \\
+ResourceCapacityUsed & number of bytes used on storage system & positive Integer & REQUIRED \\
 \hline
 LogicalCapacityUsed & number of ``logical`` bytes used on the storage system & positive Integer & OPTIONAL \\
 \hline
