@@ -278,7 +278,7 @@ VO.
 \item If included, the GroupPartition property MUST be under the
 SubjectIdentity.
 \item The GroupPartition field type MUST be a string.
-\item The Group property MUST exist in the record of GroupPartition is
+\item The Group property MUST exist in the record if GroupPartition is
     specified.
 \end{itemize}
 
@@ -297,7 +297,7 @@ would be the role in a VO.
 \begin{itemize}
 \item If included, the GroupRole property MUST be under the SubjectIdentity.
 \item The GroupRole field type MUST be a string.
-\item The Group property MUST exist in the record of GroupRole is specified.
+\item The Group property MUST exist in the record if GroupRole is specified.
 \end{itemize}
 
 {\bf Example}
@@ -357,6 +357,7 @@ record is manifested, i.e., the most recent information should be used.
 \begin{itemize}
 \item The ValidDuration field SHOULD be present in the record.
 \item The ValidDuration field type MUST be an ISO duration.
+\item The value of ValidDuration SHOULD be in the order of the time interval the records are recorded in. Setting a very high value for ValidDuration can lead to situations where a user who removes all his data is still accounted for unless a record of zero usage is created.
 \end{itemize}
 
 {\bf Example}
@@ -378,7 +379,7 @@ This property has previously been known as SpaceAllocated and SpaceUsed.
 
 \begin{itemize}
 \item The ResourceCapacityUsed property MUST be present in the record.
-\item The ResourceCapacityUsed field type MUST be a positive integer.
+\item The ResourceCapacityUsed field type MUST be a nonnegative integer.
 \item ResourceCapacityUsed SHOULD include all resources that are used to store
       the files.  The value MAY also include resources that are no longer in use
       but are unavailable for reuse, as documented in the appropriate SLA or
@@ -406,7 +407,7 @@ the files stored, i.e., excluding reservation, and any underlying
 replicas of files.
 
 \begin{itemize}
-\item The LogicalCapacityUsed field type MUST be a positive integer.
+\item The LogicalCapacityUsed field type MUST be a nonnegative integer.
 \end{itemize}
 
 {\bf Example}
@@ -496,11 +497,11 @@ GroupAuthority & authority to which the global group belongs to & String & OPTIO
 \hline
 MeasureTime & time of the measurement & ISO time\-stamp & RECOMMENDED \\
 \hline
-%ValidDuration & validity of the record & ISO timestamp & RECOMMENDED \\
-%\hline
-ResourceCapacityUsed & number of bytes used on storage system & positive Integer & REQUIRED \\
+ValidDuration & validity of the record & ISO time\-stamp & RECOMMENDED \\
 \hline
-LogicalCapacityUsed & number of ``logical`` bytes used on the storage system & positive Integer & OPTIONAL \\
+ResourceCapacityUsed & number of bytes used on storage system & nonnegative Integer & REQUIRED \\
+\hline
+LogicalCapacityUsed & number of ``logical`` bytes used on the storage system & nonnegative Integer & OPTIONAL \\
 \hline
 \end{tabular*}
 
